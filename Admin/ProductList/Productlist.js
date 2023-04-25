@@ -15,7 +15,7 @@ export default function Productlist() {
 
   const handleDelete = (_id) => {
     setProducts(Products.filter((item) => item._id !== _id))
-    axios.delete(`http://192.168.18.4:5000/api/products/${_id}`, {
+    axios.delete(`http://139.162.11.30:80/api/products/${_id}`, {
       headers: {
         token: accessToken
       }
@@ -26,7 +26,7 @@ export default function Productlist() {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get("http://192.168.18.4:5000/api/products/allpro", {
+        const res = await axios.get("http://139.162.11.30:80/api/products/allpro", {
           headers: {
             token: accessToken
           }
@@ -61,18 +61,16 @@ export default function Productlist() {
                   <Text style={{marginBottom:3 , color:'white'}}>Price : {item.price}</Text>
 
                   <View style={{  flexDirection: 'row', marginTop: 0, marginLeft: -4 }}>
-                                            {
-                                                maxRating.map((itemss, key) => {
-                                                    return (
-                                                        <TouchableOpacity activeOpacity={0.7} key={itemss}>
-                                                            <Image style={{ width: 25, height: 18, resizeMode: 'contain', marginBottom: 10 }} source={itemss <= item.ratings ? { uri: starImgFilled } : { uri: starImgCorner }} />
-                                                        </TouchableOpacity>
-                                                    )
-                                                })
-                                            }
-                                        </View>
-
-
+                        {
+                            maxRating.map((itemss, key) => {
+                                return (
+                                    <TouchableOpacity activeOpacity={0.7} key={itemss}>
+                                        <Image style={{ width: 25, height: 18, resizeMode: 'contain', marginBottom: 10 }} source={itemss <= item.ratings ? { uri: starImgFilled } : { uri: starImgCorner }} />
+                                    </TouchableOpacity>
+                                )
+                            })
+                        }
+                  </View>
                   <View
                     style={{
                       flexDirection: 'row',
@@ -89,19 +87,14 @@ export default function Productlist() {
                         paddingTop:6,
                         paddingBottom:6,
                         marginRight:18,
-                        borderRadius: 10,
+                        borderRadius: 10
                       }}>
                       <Text style={{ color: 'white', fontWeight: '500' }}>
                         Edit
                       </Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => handleDelete(item._id)}  >
-                      <Icons
-                        style={{ paddingRight: 20 }}
-                        name="delete"
-                        color="red"
-                        size={20}
-                      />
+                      <Image source={require("../../Images/delete.png")} style={{ height: 20, width: 20 }} />
                     </TouchableOpacity>
                   </View>
                 </View>

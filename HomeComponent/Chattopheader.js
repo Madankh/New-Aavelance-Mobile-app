@@ -38,7 +38,7 @@ const Chattopheader = () => {
                     token: `${accesstoken}`,
                 },
             };
-            const { data } = await axios.get(`http://192.168.18.4:5000/api/auth/get/search/user?search=${searchResult}`, config);
+            const { data } = await axios.get(`http://139.162.11.30:80/api/auth/get/search/user?search=${searchResult}`, config);
             setLoading(false);
             setSearchResult(data);
             console.log(searchResult,"searchResult")
@@ -55,7 +55,7 @@ const Chattopheader = () => {
               token: `${accesstoken}`,
             },
           };
-          const { data } = await axios.get(`http://192.168.18.4:5000/api/chat/groups`, config);
+          const { data } = await axios.get(`http://139.162.11.30:80/api/chat/groups`, config);
           setGroups(data)
         }
         getGroup();

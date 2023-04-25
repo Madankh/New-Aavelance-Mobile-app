@@ -14,11 +14,6 @@ export default function Signin() {
   const [password , setpassword] = useState('');
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  console.log(user?.currentUser , "This is CurrentUser");
-  // Boolean me = user.currentUser;
-  // if(me==true){
-  //   console.log("Suman")
-  // }
 
 useEffect(() => {
   if(user.currentUser != null || user.currentUser != undefined ){

@@ -28,7 +28,7 @@ const UpdateProfile = (current) => {
 
   const handleUpdate = async()=>{
     await fetch(
-      `http://192.168.18.4:5000/api/user/${id}`, {method: 'PUT',
+      `http://139.162.11.30:80/api/user/${id}`, {method: 'PUT',
       headers: { 'Content-Type': 'application/json' , token : accessToken },
       body: JSON.stringify({
         username: `${username}`, email: `${email}`, phoneNumber:`${phoneNumber}`,

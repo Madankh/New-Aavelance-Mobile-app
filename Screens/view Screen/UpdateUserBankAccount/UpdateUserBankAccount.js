@@ -1,8 +1,7 @@
-import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet, Alert, ScrollView, Modal, Pressable } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ScrollView, Modal, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import Icon1 from 'react-native-vector-icons/Entypo';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import axios from 'axios';
 import Topheader from '../../../HomeComponent/Topheader';
@@ -17,7 +16,7 @@ const UpdateUserBankAccount = () => {
   useEffect(() => {
         const getaccount = async () => {
               try {
-                    const res = await axios.get(`http://192.168.18.4:5000/api/bankaccout/accountdetail`, {
+                    const res = await axios.get(`http://139.162.11.30:80/api/bankaccout/accountdetail`, {
           headers: {
             token: accessToken
           }
@@ -46,7 +45,7 @@ const UpdateUserBankAccount = () => {
   const handleUpdate = async()=>{
     try {
       await fetch(
-        `http://192.168.18.4:5000/api/influencer/bank/${current?.others?._id}`, {method: 'PUT',
+        `http://139.162.11.30:80/api/influencer/bank/${current?.others?._id}`, {method: 'PUT',
         headers: { 'Content-Type': 'application/json' , token : accessToken },
         body: JSON.stringify({
           BankName:`${BankName}`,

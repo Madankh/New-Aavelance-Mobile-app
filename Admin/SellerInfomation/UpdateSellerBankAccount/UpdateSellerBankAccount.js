@@ -16,7 +16,7 @@ const UpdateSellerBankAccount = () => {
   useEffect(() => {
         const getaccount = async () => {
               try {
-                    const res = await axios.get(`http://192.168.18.4:5000/api/bankaccout/accountdetail`, {
+                    const res = await axios.get(`http://139.162.11.30:80/api/bankaccout/accountdetail`, {
           headers: {
             token: accessToken
           }
@@ -39,12 +39,10 @@ const UpdateSellerBankAccount = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [msg , setmsg]=useState('');
 
-//   console.log(objectBank?.BankAddress)
-
   const handleCreate = async()=>{
     try {
       await fetch(
-        `http://192.168.18.4:5000/api/bankaccout/${current._id}`, {method: 'PUT',
+        `http://139.162.11.30:80/api/bankaccout/${current._id}`, {method: 'PUT',
         headers: { 'Content-Type': 'application/json' , token : accessToken },
         body: JSON.stringify({
           BankName:`${BankName}`,

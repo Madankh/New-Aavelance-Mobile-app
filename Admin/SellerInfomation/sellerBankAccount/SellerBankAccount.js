@@ -21,7 +21,7 @@ const SellerBankAccount = () => {
   const handleCreate = async()=>{
     try {
       await fetch(
-        'http://192.168.18.4:5000/api/bankaccout/accountdetail', {method: 'POST',
+        'http://139.162.11.30:80/api/bankaccout/accountdetail', {method: 'POST',
         headers: { 'Content-Type': 'application/json' , token : accessToken },
         body: JSON.stringify({
          

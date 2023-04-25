@@ -31,7 +31,7 @@ const Profile = () => {
   useEffect(() => {
     const getOrder = async () => {
       try {
-        const res = await axios.get(`http://192.168.18.4:5000/api/order/myOrder`, {
+        const res = await axios.get(`http://139.162.11.30:80/api/order/myOrder`, {
           headers: {
             token: accessToken
           }
@@ -48,7 +48,7 @@ const Profile = () => {
   useEffect(() => {
     const getuser = async () => {
       try {
-        const res = await axios.get(`http://192.168.18.4:5000/api/user/own/${current._id}`, {
+        const res = await axios.get(`http://139.162.11.30:80/api/user/own/${current._id}`, {
           headers: {
             token: accessToken
           }
@@ -66,7 +66,7 @@ const Profile = () => {
   useEffect(() => {
     const getaccount = async () => {
       try {
-        const res = await axios.get(`http://192.168.18.4:5000/api/influencer/bank/user/account`, {
+        const res = await axios.get(`http://139.162.11.30:80/api/influencer/bank/user/account`, {
           headers: {
             token: accessToken
           }
@@ -78,7 +78,6 @@ const Profile = () => {
     }
     getaccount();
   }, [current._id])
-  console.log(account)
 
 
   return (
@@ -86,7 +85,6 @@ const Profile = () => {
       <Topheader />
       <ScrollView>
         <View style={{ marginTop: 20, alignSelf: 'center' }}>
-          {/* <Image source={{ uri: `https://images.unsplash.com/photo-1612817288484-6f916006741a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXR5JTIwcHJvZHVjdHN8ZW58MHx8MHx8&w=1000&q=80` }} style={{ width: "100%", height: 90, resizeMode: 'cover', borderRadius: 6, marginTop: 0 }} /> */}
           <Image source={require("../Screens/assets/photo-1612817288484-6f916006741a.jpg")} style={{ width: 500, height: 60, alignSelf: 'center', borderRadius: 10 }} />
           <Text style={{ color: "black", paddingLeft: 12, marginTop: 5, fontSize: 20, fontWeight: '900', textAlign: "center" }} >{name}</Text>
         </View>
@@ -138,7 +136,6 @@ const Profile = () => {
             </View>
             <Text style={styles.text}>{userDetails?.phoneNumber}</Text>
           </View>
-
 
           <View style={{ marginTop: 10 }}>
             <View style={{ flexDirection: 'row' }}>

@@ -16,7 +16,7 @@ export default function Productlist() {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get("http://192.168.18.4:5000/api/order/get/proccessing/userOrders", {
+        const res = await axios.get("http://139.162.11.30:80/api/order/get/proccessing/userOrders", {
           headers: {
             token: accessToken
           }
@@ -32,69 +32,42 @@ export default function Productlist() {
  console.log(Products)
 
   return (
-    <SafeAreaView>
-      <Navbar/>
-      <ScrollView>
-        <View style={{ backgroundColor: 'black' }}>
-          <Text style={{ alignSelf: 'center', fontSize: 24, fontWeight: '900' , color:"white" }}>
-            Pending orders
-          </Text>
-          {Products.length !== 0 ?
-          Products?.map((items) => (
-            <TouchableOpacity key={items._id}>
-              <View>
-                {items?.orderItems?.map((item)=>(
-                  
-                  <View style={{ flexDirection: 'row', padding: 10, marginTop: 10 }}>
-                    {item.imgKey.slice(0,1).map((img)=>(
-                      <FastImage source={{ uri: `${img}` }} style={{ height: 100 , width: 80}}/>
-
-                    ))}
-
-                <View style={{ marginLeft: 4, width: 280 }}>
-                  <Text style={{marginBottom:3 , color:'white'}}>{item.title}</Text>
-                  {item?.color.length !== 0  ?
-                  <Text style={{marginBottom:3 , color:'white'}}>Color : {item.color} </Text>:""
-                   }
-                   {item.size.length !== 0 ? 
-                  <Text style={{marginBottom:3 , color:'white'}}>Size : {item.size} </Text> : ""
-                   }
-                  <Text style={{marginBottom:3 , color:'white'}}>Quantity : {item?.quantity}</Text>
-                  <Text style={{marginBottom:3 , color:'white'}}>Price : {item?.price}</Text>
-                  <Text style={{marginBottom:3 , color:'white'}}>orderStatus : {items.orderStatus}</Text>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      marginLeft: 0,
-                      justifyContent: 'space-evenly',
-                    }}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.navigate(navigationStrings.ChangeorderStatus , {items})}
-                      style={{
-                        backgroundColor: 'royalblue',
-                        paddingLeft: 27,
-                        paddingRight: 27,
-                        marginLeft:-200,
-                        paddingTop:5,
-                        paddingBottom:5,
-                        borderRadius: 10,
-
-                      }}>
-                      <Text style={{ color: 'white', fontWeight: '500' }}>
-                        Edit
-                      </Text>
-                    </TouchableOpacity>
+    <SafeAreaView style={{ flex: 1 }}>
+    <Navbar />
+    <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
+      <View style={{ backgroundColor: 'black' }}>
+        <Text style={{ alignSelf: 'center', fontSize: 24, fontWeight: '900', color: 'white', marginTop: 20 }}>
+          Pending orders
+        </Text>
+        {Products.length !== 0 ?
+          Products.map((items) => (
+            <TouchableOpacity key={items._id} activeOpacity={0.7} onPress={() => navigation.navigate(navigationStrings.ChangeorderStatus, { items })}>
+              <View style={{ backgroundColor: 'white', marginTop: 10, borderRadius: 10, padding: 10 }}>
+                {items.orderItems.map((item) => (
+                  <View key={item._id} style={{ flexDirection: 'row', padding: 10 }}>
+                    <FastImage source={{ uri: item.imgKey[0] }} style={{ height: 100, width: 80, marginRight: 10 }} />
+                    <View style={{ flex: 1 }}>
+                      <Text style={{ marginBottom: 3, color: 'black', fontWeight: 'bold', fontSize: 16 }}>{item.title}</Text>
+                      {item.color.length !== 0 &&
+                        <Text style={{ marginBottom: 3, color: 'gray' }}>Color: {item.color}</Text>
+                      }
+                      {item.size.length !== 0 &&
+                        <Text style={{ marginBottom: 3, color: 'gray' }}>Size: {item.size}</Text>
+                      }
+                      <Text style={{ marginBottom: 3, color: 'gray' }}>Quantity: {item.quantity}</Text>
+                      <Text style={{ marginBottom: 3, color: 'gray' }}>Price: {item.price}</Text>
+                      <Text style={{ marginBottom: 3, color: 'gray' }}>Order Status: {items.orderStatus}</Text>
+                    </View>
                   </View>
-                </View>
-                </View>
                 ))}
               </View>
             </TouchableOpacity>
-          )):
-          <Text style={{color:"black"}}>Sorry you don't have any Pending Orders</Text>}
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+          )) :
+          <Text style={{ color: 'black', marginTop: 20, alignSelf: 'center' }}>Sorry, you don't have any Pending Orders</Text>
+        }
+      </View>
+    </ScrollView>
+  </SafeAreaView>
+  
   );
 }

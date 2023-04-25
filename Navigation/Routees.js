@@ -63,7 +63,6 @@ import UserTransaction from '../Screens/view Screen/UserTransaction/UserTransact
 import Discover from '../Component/Discover';
 import Makeup from '../Component/Makeup';
 import Fashion from '../Component/Fashion';
-import Chat from '../HomeComponent/Chat';
 
 const Stack = createNativeStackNavigator();
 
@@ -75,13 +74,10 @@ function Routees() {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false,}}>
           <Stack.Screen name={navigationStrings.Home} component={Home}/>
-          
           <Stack.Screen name={navigationStrings.Discover} component={Discover}/>
           <Stack.Screen name={navigationStrings.Makeup} component={Makeup}/>
           <Stack.Screen name={navigationStrings.Fashion} component={Fashion}/>
           
-          {/* <Stack.Screen name={navigationStrings.Chat} component={Chat}/> */}
-
           <Stack.Screen name={navigationStrings.Totalsale} component={Totalsale}/>
           <Stack.Screen name={navigationStrings.UserFeed} component={user?.currentUser ? UserFeed : Signin} />
 

@@ -28,7 +28,6 @@ export default function SellerSignup() {
   const [Pan_Number, setPan_Number] = useState('');
   const [National_id, setNational_id] = useState('');
   const [Post_Number, setPost_Number] = useState('');
-  const [avatar , setavatar] = useState('');
   const dispatch = useDispatch();
   const navigation = useNavigation();
 

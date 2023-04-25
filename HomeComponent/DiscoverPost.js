@@ -45,7 +45,7 @@ export default function DiscoverPost({ post }) {
   useEffect(() => {
     const getuser = async () => {
       try {
-        const res = await axios.get(`http://192.168.18.4:5000/api/user/post/user/details/${id}`)
+        const res = await axios.get(`http://139.162.11.30:80/api/user/post/user/details/${id}`)
         setuser(res.data);
       } catch (error) {
         console.log("Some error occured")
@@ -65,7 +65,7 @@ export default function DiscoverPost({ post }) {
       "comment": `${commentwriting}`,
       "profile": `${User?.currentUser?.others?.profile}`
     }
-    await fetch(`http://192.168.18.4:5000/api/post/comment/post`, { method: "PUT", headers: { 'Content-Type': "application/Json", token: accessToken }, body: JSON.stringify(comment) })
+    await fetch(`http://139.162.11.30:80/api/post/comment/post`, { method: "PUT", headers: { 'Content-Type': "application/Json", token: accessToken }, body: JSON.stringify(comment) })
     setComments(Comments.concat(comment));
   }
 
@@ -95,11 +95,11 @@ export default function DiscoverPost({ post }) {
 
   const handleLike = async () => {
     if (Like == like) {
-      await fetch(`http://192.168.18.4:5000/api/post/${post._id}/like`, { method: "PUT", headers: { 'Content-Type': "application/Json", token: accessToken } })
+      await fetch(`http://139.162.11.30:80/api/post/${post._id}/like`, { method: "PUT", headers: { 'Content-Type': "application/Json", token: accessToken } })
       setLike(anotherlikeicon);
       setCount(count + 1);
     } else {
-      await fetch(`http://192.168.18.4:5000/api/post/${post._id}/like`, { method: "PUT", headers: { 'Content-Type': "application/Json", token: accessToken } })
+      await fetch(`http://139.162.11.30:80/api/post/${post._id}/like`, { method: "PUT", headers: { 'Content-Type': "application/Json", token: accessToken } })
       setLike(like)
       setCount(count - 1);
     }

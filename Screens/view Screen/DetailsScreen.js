@@ -47,7 +47,7 @@ export default function DetailsScreen(items , productLink ) {
     useEffect(() => {
       const getProduct = async () => {
         try {
-          const res = await axios.get(`http://192.168.18.4:5000/api/products/find/${id}`);
+          const res = await axios.get(`http://139.162.11.30:80/api/products/find/${id}`);
           setProduct(res.data);
         } catch (error) { }
       };
@@ -58,7 +58,7 @@ export default function DetailsScreen(items , productLink ) {
     useEffect(() => {
       const getPosts = async () => {
         try {
-          const res = await axios.get(`http://192.168.18.143:5000/api/post/getallpost?category=${product?.categories}&subcategories=${product?.subcategories}`)
+          const res = await axios.get(`http://139.162.11.30:80/api/post/getallpost?category=${product?.categories}&subcategories=${product?.subcategories}`)
           setPosts(res.data);
         } catch (error) {
   
@@ -72,7 +72,7 @@ export default function DetailsScreen(items , productLink ) {
     useEffect(() => {
       const getProducts = async ()=>{
         try {
-          const res = await axios.get(`http://192.168.18.143:5000/api/products/getallProduct?category=${product?.categories}&&subcategories=${product?.subcategories}`)
+          const res = await axios.get(`http://139.162.11.30:80/api/products/getallProduct?category=${product?.categories}&&subcategories=${product?.subcategories}`)
           setProducts(res.data)
         } catch (error) {
           

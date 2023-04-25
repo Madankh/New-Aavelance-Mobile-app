@@ -19,7 +19,7 @@ const SellerUpdatePassword = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
 const updatepass = async()=>{
-    await fetch(`http://192.168.18.4:5000/api/seller/update/password/${current._id}`, {method: 'PUT',
+    await fetch(`http://139.162.11.30:80/api/seller/update/password/${current._id}`, {method: 'PUT',
       headers: { 'Content-Type': 'application/json' , token : accessToken },
       body: JSON.stringify({
         oldpassword: `${oldpassword}`, newPassword: `${newPassword}`, comfirmPassword:`${comfirmPassword}`
@@ -46,7 +46,7 @@ const updatepass = async()=>{
             />
             <Text style={styles.text}>Current Password</Text>
           </View>
-          <TextInput style={styles.text} placeholder={"Current Password"} onChangeText={(value)=> setoldpassword(value)}/>
+          <TextInput style={styles.text} placeholder={"Current Password"}   secureTextEntry={true} onChangeText={(value)=> setoldpassword(value)}/>
         </View>
         <View style={{ marginTop: 10 }}>
           <View style={{ flexDirection: 'row' }}>
@@ -57,7 +57,7 @@ const updatepass = async()=>{
             />
             <Text style={styles.text}>New Password</Text>
           </View>
-          <TextInput style={styles.text} placeholder={"New Password"} onChangeText={(value)=> setnewPassword(value)}/>
+          <TextInput style={styles.text} placeholder={"New Password"} secureTextEntry={true} onChangeText={(value)=> setnewPassword(value)}/>
         </View>
         <View style={{ marginTop: 10 }}>
           <View style={{ flexDirection: 'row' }}>
@@ -68,7 +68,7 @@ const updatepass = async()=>{
             />
             <Text style={styles.text}>Comform Password</Text>
           </View>
-          <TextInput style={styles.text} placeholder={"Comform Password"} onChangeText={(value)=> setcomfirmPassword(value)}/>
+          <TextInput style={styles.text} secureTextEntry={true} placeholder={"Comform Password"} onChangeText={(value)=> setcomfirmPassword(value)}/>
         </View>
  
       </View>

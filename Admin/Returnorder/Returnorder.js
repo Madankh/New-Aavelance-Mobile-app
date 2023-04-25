@@ -8,10 +8,6 @@ import axios from 'axios';
 
 export default function Returnorder() {
   const [sellerorders, setSellerOrders] = useState([]);
-
-  // const [selectedValue, setSelectedValue] = useState();
-  // const [selectedValue1, setSelectedValue1] = useState();
-
   const admin = useSelector((state) => state.seller);
   // let seller = admin;
   let accessToken = admin.currentSeller.accessToken;
@@ -22,7 +18,7 @@ export default function Returnorder() {
   useEffect(() => {
     const TotSales = async () => {
       try {
-        const res = await axios.get('http://192.168.18.4:5000/api/order/get/return/userOrder', {
+        const res = await axios.get('http://139.162.11.30:80/api/order/get/return/userOrder', {
           headers: {
             token: accessToken
           }

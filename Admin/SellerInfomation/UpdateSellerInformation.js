@@ -27,7 +27,7 @@ const UpdateSellerInformation = (current) => {
 
 const handleUpdate=async()=>{
       try {
-            await fetch(`http://192.168.18.4:5000/api/seller/${detail._id}`, {method: 'PUT',
+            await fetch(`http://139.162.11.30:80/api/seller/${detail._id}`, {method: 'PUT',
               headers: { 'Content-Type': 'application/json' , token : accessToken },
               body: JSON.stringify({
                   username: `${username}`, email: `${email}`, phoneNumber:`${phoneNumber}`,

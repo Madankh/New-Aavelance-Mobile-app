@@ -76,7 +76,7 @@ const Products = (item) => {
     console.log(filters)
     const fetchApi = async () => {
         try {
-            const res = await axios.get(subcat !== '' && subcat !== undefined && subcat !== "Show All" ? `http://192.168.18.4:5000/api/products/getallProduct?category=${cat}&subcategories=${subcat}` : `http://192.168.18.4:5000/api/products/getallProduct?category=${cat}`);
+            const res = await axios.get(subcat !== '' && subcat !== undefined && subcat !== "Show All" ? `http://139.162.11.30:80/api/products/getallProduct?category=${cat}&subcategories=${subcat}` : `http://139.162.11.30:80/api/products/getallProduct?category=${cat}`);
             setProduct(res.data);
         } catch (error) {
             console.log(error.message)

@@ -18,7 +18,7 @@ export default function Fashion() {
     useEffect(() => {
       const getuser = async () => {
         try {
-          const res = await axios.get(`http://192.168.18.4:5000/api/user/all/user`)
+          const res = await axios.get(`http://139.162.11.30:80/api/user/all/user`)
           setUsers(res.data);
         }
         catch (error) {
@@ -32,7 +32,7 @@ export default function Fashion() {
     useEffect(() => {
       const getPost = async () => {
         try {
-          const res = await axios.get(`http://192.168.18.4:5000/api/post/getallpost?category=Women's Fashion`, {
+          const res = await axios.get(`http://139.162.11.30:80/api/post/getallpost?category=Women's Fashion`, {
             headers: {
               token: accessToken
             }

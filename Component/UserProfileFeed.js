@@ -28,7 +28,7 @@ export default function UserProfileFeed(item) {
           // useEffect(() => {
           //           const getuser = async () => {
           //                     try {
-          //                               const res = await axios.get(`http://192.168.18.4:5000/api/user/all/user/${id}`)
+          //                               const res = await axios.get(`http://139.162.11.30:80/api/user/all/user/${id}`)
           //                               setUsers(res.data);
           //                               // console.log(res.data , "dsfsfs")
           //                     }
@@ -43,7 +43,7 @@ export default function UserProfileFeed(item) {
           useEffect(() => {
             const getPost = async()=>{
               try {
-                const res = await axios.get(`http://192.168.18.4:5000/api/post/get/post/${idforfetchpost}`)
+                const res = await axios.get(`http://139.162.11.30:80/api/post/get/post/${idforfetchpost}`)
                 setPost(res.data);
                 console.log(res,"dk")
               } catch (error) {
@@ -57,7 +57,7 @@ export default function UserProfileFeed(item) {
           useEffect(() => {
             const getuser = async () => {
               try {
-                const res = await axios.get(`http://192.168.18.4:5000/api/user/post/user/details/${idforfetchpost}`)
+                const res = await axios.get(`http://139.162.11.30:80/api/user/post/user/details/${idforfetchpost}`)
                 setuser(res.data);
               } catch (error) {
                 console.log("Some error occured")

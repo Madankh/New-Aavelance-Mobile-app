@@ -38,7 +38,7 @@ export default function Subcategories() {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const res = await axios.get(`http://192.168.18.4:5000/api/post/getallpost?category=Men's Fashion`)
+        const res = await axios.get(`http://139.162.11.30:80/api/post/getallpost?category=Men's Fashion`)
         setPosts(res.data);
       } catch (error) {
 

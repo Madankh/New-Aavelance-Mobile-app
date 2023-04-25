@@ -15,22 +15,17 @@ export default function Followingstore(following) {
   const [users , setusers] = useState([]);
 
       let userid = user?.currentUser?.others?._id;
-      console.log(userid)
       useEffect(() => {
             const getusers = async () => {
               try {
-                const res = await axios.get(`http://192.168.18.4:5000/api/user/following/${userid}`)
-                // const res = await fetch(`http://192.168.18.4:5000/api/user/following/${userid}` , {method:'GET' , headers:{'Content-Type': 'application/json'} });
+                const res = await axios.get(`http://139.162.11.30:80/api/user/following/${userid}`)
                 setusers(res.data);
-                console.log(res.data)
               } catch (error) {
         
               }
             };
             getusers()
           }, []);
-
-    console.log(users , "me")
 
   return (
     <>

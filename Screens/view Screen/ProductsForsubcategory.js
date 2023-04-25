@@ -26,7 +26,7 @@ const ProductsForsubcategory = (item) => {
 
     const fetchApi = async()=>{
         try {
-            const res = await axios.get( cat ? `http://192.168.18.4:5000/api/products/getallProduct?subcategories=${cat}` :`http://192.168.18.4:5000/api/products/getallProduct`);
+            const res = await axios.get( cat ? `http://139.162.11.30:80/api/products/getallProduct?subcategories=${cat}` :`http://139.162.11.30:80/api/products/getallProduct`);
             setProduct(res.data);
         } catch (error) {
             console.log(error.message)

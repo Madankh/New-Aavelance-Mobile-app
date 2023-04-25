@@ -8,7 +8,7 @@ import { sellerRequest } from "./requestMethod";
 export const login = async(dispatch , user)=>{
     dispatch(loginStart());
     try{
-        const res = await axios.post("http://192.168.18.4:5000/api/auth/login" , user);
+        const res = await axios.post("http://139.162.11.30:80/api/auth/login" , user);
         dispatch(loginSuccess(res.data))
         
    }catch(err){
@@ -19,7 +19,7 @@ export const login = async(dispatch , user)=>{
 export const register = async(dispatch , user)=>{
   dispatch(loginStart());
   try {
-    const res = await axios.post("http://192.168.18.4:5000/api/auth/register" , user);
+    const res = await axios.post("http://139.162.11.30:80/api/auth/register" , user);
     dispatch(loginSuccess(res.data))
   } catch (err) {
     dispatch(loginFailure(err?.response?.data))
@@ -29,7 +29,7 @@ export const register = async(dispatch , user)=>{
 export const VerifyUser = async(dispatch , user)=>{
   dispatch(loginStart());
   try{
-      const res = await axios.post("http://192.168.18.4:5000/api/auth/verify/email" , user);
+      const res = await axios.post("http://139.162.11.30:80/api/auth/verify/email" , user);
       dispatch(loginSuccess(res.data))
  }catch(err){
    dispatch(loginFailure())
@@ -51,7 +51,7 @@ export const VerifyUser = async(dispatch , user)=>{
 export const sellerlogin = async(dispatch , seller)=>{
   dispatch(sellerloginStart());
   try{
-      const res = await axios.post("http://192.168.18.4:5000/api/seller/login" , seller);
+      const res = await axios.post("http://139.162.11.30:80/api/seller/login" , seller);
       dispatch(sellerloginSuccess(res.data))
       
  }catch(err){
@@ -62,7 +62,7 @@ export const sellerlogin = async(dispatch , seller)=>{
 export const VerifySeller = async(dispatch , seller)=>{
   dispatch(SellerloginStart());
   try{
-      const res = await axios.post("http://192.168.18.4:5000/api/seller/verify/email" , seller);
+      const res = await axios.post("http://139.162.11.30:80/api/seller/verify/email" , seller);
       dispatch(SellerloginSuccess(res.data))
  }catch(err){
    dispatch(SellerloginFailure())
@@ -72,7 +72,7 @@ export const VerifySeller = async(dispatch , seller)=>{
 export const sellerregister = async(dispatch , seller)=>{
 dispatch(loginStart());
 try {
-  const res = await axios.post("http://192.168.18.4:5000/api/seller/register" , seller);
+  const res = await axios.post("http://139.162.11.30:80/api/seller/register" , seller);
   dispatch(sellerloginSuccess(res.data))
 } catch (err) {
   dispatch(sellerloginFailure(err?.response?.data))

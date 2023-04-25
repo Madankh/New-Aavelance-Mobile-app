@@ -24,7 +24,7 @@ const SearchProducts = (item) => {
     console.log(filterProducts.length === 0)
     const fetchApi = async () => {
         try {
-            const res = await axios.get(`http://192.168.18.4:5000/api/products/getallProduct?search_query=${cat}`);
+            const res = await axios.get(`http://139.162.11.30:80/api/products/getallProduct?search_query=${cat}`);
             setProduct(res.data);
         } catch (error) {
             console.log(error.message)

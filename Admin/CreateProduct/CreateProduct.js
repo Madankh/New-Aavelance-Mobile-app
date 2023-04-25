@@ -182,7 +182,7 @@ export default function CreateProduct() {
 
     formData.append("Hair_Type", Hair_Type);
     formData.append("Skin_Type", Skin_Type);
-    await axios.post("http://192.168.18.4:5000/api/products/product", formData, { headers: { 'Content-Type': 'multipart/form-data', token: accessToken } }).then((data) => {
+    await axios.post("http://139.162.11.30:80/api/products/product", formData, { headers: { 'Content-Type': 'multipart/form-data', token: accessToken } }).then((data) => {
       setmsg(data.data)
       console.log(data.data , "this is data")
       setModalVisible(true)

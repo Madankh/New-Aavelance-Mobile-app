@@ -37,7 +37,7 @@ console.log(PaymentMethods)
       console.log(cart.products[0])
       {for (let i = 0; i < cart.products.length; i++) {
           try {
-             await fetch('http://192.168.18.4:5000/api/order', {method: 'POST',
+             await fetch('http://139.162.11.30:80/api/order', {method: 'POST',
               headers: { 'Content-Type': 'application/json' , token : accessToken },
               body: JSON.stringify({
                 shippingInfo:{

@@ -1,8 +1,8 @@
-import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet, Alert, ScrollView } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ScrollView, Modal, Pressable } from 'react-native'
 import React, { useState } from 'react';
 import Icon1 from 'react-native-vector-icons/Entypo';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Topheader from '../../../HomeComponent/Topheader';
 
@@ -11,12 +11,11 @@ import Topheader from '../../../HomeComponent/Topheader';
 const UserBankAccount = () => {
   const navigation = useNavigation();
 
+  const [modalVisible, setModalVisible] = useState(false);
+  const [msg , setmsg]=useState('');
+
   let userDetails = useSelector(state => state.user)
   let accessToken = userDetails?.currentUser?.accessToken;
-  const id = userDetails?.currentUser?.others?._id
-  console.log(accessToken , "accessToken")
-  // const seller = useSelector((state) => state.seller);
-  let current = userDetails?.currentUser;
 
   const [BankName , setBankName] = useState('');
   const [accountNumber , setbank_account_number] = useState('');
@@ -27,10 +26,9 @@ const UserBankAccount = () => {
   const handleCreate = async()=>{
     try {
       await fetch(
-        'http://192.168.18.4:5000/api/influencer/bank/create/bank/account', {method: 'POST',
+        'http://139.162.11.30:80/api/influencer/bank/create/bank/account', {method: 'POST',
         headers: { 'Content-Type': 'application/json' , token : accessToken },
         body: JSON.stringify({
-         
           BankName:`${BankName}`,
           accountNumber:accountNumber,
           BankAddress:`${BankAddress}`,
@@ -39,12 +37,8 @@ const UserBankAccount = () => {
         .then(response => {
           response.json()
             .then(data => {
-              if(data.success !== true){
-                console.log(data)
-              }else{
-                console.log("sUCCESS")
-
-              }
+              setmsg(data);
+              setModalVisible(true)
             });
         })
     }
@@ -54,7 +48,7 @@ const UserBankAccount = () => {
   }
 
   return (
-    <View>
+    <ScrollView>
       <Topheader/>
       <ScrollView>
         <View>
@@ -116,11 +110,35 @@ const UserBankAccount = () => {
           }
         </View>
       </ScrollView>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>{`${msg}`}</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Oky</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+
+
       <TouchableOpacity style={styles.logoutstyle} onPress={handleCreate}>
         <Text style={styles.logoutText}>Add Bank Details</Text>
       </TouchableOpacity>
 
-    </View>
+    </ScrollView>
   )
 }
 
@@ -155,5 +173,44 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '900',
     fontSize: 17
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 10,
+    padding: 10,
+    elevation: 2,
+    paddingLeft:50,
+    paddingRight:50,
+    marginTop:20,
+    
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "red",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign:"left"
   }
 })

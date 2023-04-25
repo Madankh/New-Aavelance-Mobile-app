@@ -14,28 +14,6 @@ import navigationStrings from '../../constants/navigationStrings';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-const items = [
-  {
-    id: 1,
-    image: 'https://m.media-amazon.com/images/I/71waplSVO7L._AC_SL1500_.jpg',
-    text: 'Razer Kraken X Ultralight Gaming Headset: 7.1 Surround Sound - Lightweight Aluminum Frame',
-  },
-  {
-    id: 2,
-    image: 'https://m.media-amazon.com/images/I/81Kh1wq4YOL._AC_SL1500_.jpg',
-    text: 'Razer Kraken X Ultralight Gaming Headset: 7.1 Surround Sound - Lightweight Aluminum Frame',
-  },
-  {
-    id: 3,
-    image: 'https://m.media-amazon.com/images/I/71Nnf33+tyL._AC_SL1500_.jpg',
-    text: 'LG Gram 14Z90P Laptop 14 Ultra-Lightweight, IPS WUXGA (1920 x 1200), Intel Evo 11th gen CORE i7 , 16GB RAM,',
-  },
-  {
-    id: 4,
-    image: 'https://m.media-amazon.com/images/I/712iry8nIYL._AC_SX569_.jpg',
-    text: 'Razer Kraken X Ultralight Gaming Headset: 7.1 Surround Sound - Lightweight Aluminum Frame',
-  },
-];
 
 export default function ProductPage(product) {
   const navigation = useNavigation();
@@ -65,7 +43,7 @@ export default function ProductPage(product) {
   useEffect(() => {
     const getuser = async () => {
       try {
-        const res = await axios.get(`http://192.168.18.4:5000/api/user/own/${Userid}`, {
+        const res = await axios.get(`http://139.162.11.30:80/api/user/own/${Userid}`, {
           headers: {
             token: accessToken
           }
@@ -83,13 +61,13 @@ console.log(userDetails)
 
   const changefollow = async() =>{
     if(follow == 'Follow shop'){
-      await axios.put(`http://192.168.18.4:5000/api/seller/${id}/follow` , {
+      await axios.put(`http://139.162.11.30:80/api/seller/${id}/follow` , {
                 user: `${Userid}`
             })
             navigation.navigate(navigationStrings.Home)
 
     }else if( follow == 'Unfollow shop'){
-      await axios.put(`http://192.168.18.4:5000/api/seller/${id}/unfollow` , {
+      await axios.put(`http://139.162.11.30:80/api/seller/${id}/unfollow` , {
                 user: `${Userid}`
             })
             navigation.navigate(navigationStrings.Home)
@@ -100,7 +78,7 @@ console.log(userDetails)
     useEffect(() => {
         const getProducts = async ()=>{
             try {
-                const res = await axios.get(`http://192.168.18.4:5000/api/products/allproduct/${id}` )
+                const res = await axios.get(`http://139.162.11.30:80/api/products/allproduct/${id}` )
                 setProducts(res.data);
               } catch (error) {
                 console.log(error)
@@ -113,7 +91,7 @@ console.log(userDetails)
       useEffect(() => {
         const getshopname = async ()=>{
             try {
-                const res = await axios.get(`http://192.168.18.4:5000/api/seller/seller/${id}` )
+                const res = await axios.get(`http://139.162.11.30:80/api/seller/seller/${id}` )
                 setShopname(res.data);
               } catch (error) {
                 console.log(error)
@@ -153,13 +131,7 @@ console.log(userDetails)
             </View>
           </View>
           <View style={{width:'100%' , justifyContent:'center' , flexDirection:'row' , backgroundColor:'black' , marginTop:6 , padding:15}}>
-            {/* <TouchableOpacity style={{backgroundColor:'black'}}>
-              <Text style={{marginLeft:10 , color:'white'}}>Product</Text>
-            </TouchableOpacity> */}
-
-            {/* <TouchableOpacity style={{backgroundColor:'black'}}>
-              <Text style={{marginLeft:16  , color:'white'}}>Streaming Videos</Text>
-            </TouchableOpacity> */}
+           
           </View>
         </View>
         <View style={{backgroundColor: 'white', marginTop: 20}}>
@@ -176,11 +148,6 @@ console.log(userDetails)
                       <Image style={styles.img} source={{uri: item}} />
                     ))}
                     <Text style={styles.text1}>{items?.title?.slice(0,60)}</Text>
-
-                    {/* <View>
-                 <Stars 
-                 />
-                </View> */}
 
                     <View style={{flexDirection: 'row'}}>
                     <View style={{ justifyContent: "center", flexDirection: 'row', marginTop: 0 , marginLeft:5 }}>

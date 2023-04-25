@@ -14,11 +14,9 @@ import axios from 'axios';
 const SellerInformation = () => {
   const navigation = useNavigation();
   const seller = useSelector((state) => state.seller);
-  // const user = useSelector((state)=> state.user);
   let current = seller?.currentSeller;
   let accessToken = current.accessToken;
   let name = current.username;
-  console.log(current.shopAddress);
 
   let following = current.followers.length;
 
@@ -34,7 +32,7 @@ const SellerInformation = () => {
   useEffect(() => {
     const getaccount = async () => {
       try {
-        const res = await axios.get(`http://192.168.18.4:5000/api/bankaccout/accountdetail`, {
+        const res = await axios.get(`http://139.162.11.30:80/api/bankaccout/accountdetail`, {
           headers: {
             token: accessToken
           }

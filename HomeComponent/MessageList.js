@@ -80,7 +80,7 @@ export default function MessageList(CurrentChat) {
               token: `${accesstoken}`,
             },
           };
-          const { data } = await axios.get(`http://192.168.18.4:5000/api/message/get/all/group/msg/${CurrentChat?.CurrentChat?._id}`, config);
+          const { data } = await axios.get(`http://139.162.11.30:80/api/message/get/all/group/msg/${CurrentChat?.CurrentChat?._id}`, config);
           setMessages(data);
           socket.current.emit("join chat" , CurrentChat?.CurrentChat?._id);
         } catch (error) {
@@ -90,7 +90,7 @@ export default function MessageList(CurrentChat) {
     
       useEffect(()=>{
         if(CurrentChat !== ''){
-          socket.current = io("http://192.168.18.4:5000");
+          socket.current = io("http://139.162.11.30:80");
           socket.current.emit("setup" , user);
         }
        },[id]);
@@ -101,7 +101,7 @@ export default function MessageList(CurrentChat) {
             setMessages([...messages, { content: message, _id: uuidv4() , image:imagePreview, sender: { profile: `${userDetails?.currentUser?.others?.profile}`, username: `${userDetails?.currentUser?.others?.username}` , _id: `${userDetails?.currentUser?.others?._id}` } }]);
           try {
             await fetch(
-              `http://192.168.18.4:5000/api/message/send/msg`, {
+              `http://139.162.11.30:80/api/message/send/msg`, {
                 method: 'POST',
               headers: { 'Content-Type': 'application/json', token: accesstoken },
               body: JSON.stringify({

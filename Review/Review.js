@@ -34,7 +34,7 @@ export default function Review(product) {
     }
     const handleSubmit = async()=>{
       try {
-            await fetch(`http://192.168.18.143:5000/api/products/reviews/product`, {method: 'PUT',
+            await fetch(`http://139.162.11.30:80:5000/api/products/reviews/product`, {method: 'PUT',
               headers: { 'Content-Type': 'application/json' , token : accessToken },
               body: JSON.stringify({
                 productid: id , comment : comment , rating:defaultRating

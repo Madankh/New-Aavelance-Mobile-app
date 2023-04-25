@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, TextInput, Pressable, TouchableOpacity, ScrollView, Button } from 'react-native'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import navigationStrings from '../constants/navigationStrings';

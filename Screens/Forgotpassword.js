@@ -1,6 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Modal, Pressable } from 'react-native'
 import React from 'react'
-import navigationStrings from '../constants/navigationStrings';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 
@@ -12,7 +11,7 @@ export default function Forgotpassword() {
 
 
   const handleSend = async()=>{
-    await fetch(`http://192.168.18.4:5000/api/auth/forgetpassword` , {method:"POST", headers:{ 'Content-Type': 'application/json'},
+    await fetch(`http://139.162.11.30:80/api/auth/forgetpassword` , {method:"POST", headers:{ 'Content-Type': 'application/json'},
     body: JSON.stringify({email:email})}).then(response => {
       response.json()
       .then(data => {

@@ -21,7 +21,7 @@ export default function ProductUpdate(item) {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get(`http://192.168.18.4:5000/api/products/find/${product?.item?._id}`);
+        const res = await axios.get(`http://139.162.11.30:80/api/products/find/${product?.item?._id}`);
         setupdateProduct(res.data)
       } catch (error) {
 
@@ -114,7 +114,7 @@ export default function ProductUpdate(item) {
         formData.append("price", price);
         formData.append("Stock", Stock);
         try {
-          await axios.put(`http://192.168.18.4:5000/api/products/${product.item._id}`, formData, { headers: { 'Content-Type': 'multipart/form-data', token: accessToken } }).then((data) => {
+          await axios.put(`http://139.162.11.30:80/api/products/${product.item._id}`, formData, { headers: { 'Content-Type': 'multipart/form-data', token: accessToken } }).then((data) => {
             setmsg(data.data);
             setModalVisible(true)
           })

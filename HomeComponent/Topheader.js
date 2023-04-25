@@ -24,10 +24,6 @@ export default function Topheader(id) {
                 </TouchableOpacity>
                 <View style={{ flexDirection: 'row', paddingRight: 10, alignItems: 'center' }}>
                     <View style={{ flexDirection: 'row' }}>
-                       {/* <TouchableOpacity onPress={() =>  navigation.navigate(navigationStrings.Chat)}>
-                            <Image source={charIcon} style={{ width: 23, height: 23, marginRight:13,paddingLeft: 14  }} />
-                       </TouchableOpacity> */}
-
                        <TouchableOpacity onPress={() =>  navigation.navigate(navigationStrings.Search)}>
                             <Image source={SearchIcon} style={{ width: 23, height: 23, marginLeft:0 ,paddingLeft: 14 }} />
                        </TouchableOpacity>

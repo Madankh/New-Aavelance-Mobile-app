@@ -23,7 +23,7 @@ const PasswordUpdate = () => {
   console.log(current._id)
 
 const updatepass = async()=>{
-    await fetch(`http://192.168.18.4:5000/api/auth/update/password/${current._id}`, {method: 'PUT',
+    await fetch(`http://139.162.11.30:80/api/auth/update/password/${current._id}`, {method: 'PUT',
       headers: { 'Content-Type': 'application/json' , token : accessToken },
       body: JSON.stringify({
         oldpassword: `${oldpassword}`, newPassword: `${newPassword}`, comfirmPassword:`${comfirmPassword}`

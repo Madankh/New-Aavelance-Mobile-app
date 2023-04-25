@@ -1,4 +1,4 @@
-import { View, Text , Image, TouchableOpacity , Modal, StyleSheet, Pressable } from 'react-native'
+import { View, Text , Image, TouchableOpacity , ScrollView , Modal, StyleSheet, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import { UpdateModal } from './UpdateModal';
 import Navbar from '../adminNavbar/Navbar';
@@ -21,7 +21,7 @@ export default function ChangeorderStatus(items) {
     }
 
    const handleClick = async()=>{
-      await fetch(`http://192.168.18.4:5000/api/order/update/status/${product?.items?._id}`,
+      await fetch(`http://139.162.11.30:80/api/order/update/status/${product?.items?._id}`,
        {method: 'PUT',headers: { 'Content-Type': 'application/json'} ,  body: JSON.stringify({status:`${chooseData}`})}) 
        .then(response => {
         response.json()
@@ -35,7 +35,7 @@ export default function ChangeorderStatus(items) {
     }
 
   return (
-    <View>
+    <ScrollView>
       <Navbar/>
         {product?.items?.orderItems?.map((item)=>(
           <View>
@@ -155,7 +155,7 @@ export default function ChangeorderStatus(items) {
             </TouchableOpacity>
 
 
-    </View>
+    </ScrollView>
   )
 }
 

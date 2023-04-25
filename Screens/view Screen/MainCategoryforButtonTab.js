@@ -1,16 +1,13 @@
-import { View, Text, SafeAreaView,StyleSheet, Icon, TextInput, TouchableOpacity,FlatList, Dimensions, ScrollView, Image } from 'react-native';
+import { View, Text, SafeAreaView,StyleSheet, TouchableOpacity,FlatList, Dimensions, Image } from 'react-native';
 import React from 'react';
 import categoryDetails from '../consts/categoryDetails';
 import { useNavigation } from '@react-navigation/native';
 import navigationStrings from '../../constants/navigationStrings';
 import Topheader from '../../HomeComponent/Topheader';
-import { useSelector } from 'react-redux';
 const width = Dimensions.get("screen").width / 2 - 25;
 
 const MainCategoryforButtonTab = () => {
   const navigation = useNavigation();
-  const user = useSelector((state)=> state.user);
-  let cat;
   const Card = ({ item }) => {
     return (
       <>
@@ -46,7 +43,6 @@ const style = StyleSheet.create({
     justifyContent: 'space-between'
   },
   card: {
-    // height: 180,
     backgroundColor: 'white',
     marginHorizontal: 5,
     borderRadius: 10,

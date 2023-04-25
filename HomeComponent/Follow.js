@@ -18,7 +18,7 @@ export default function Follow(item) {
   console.log(id)
   const [Follow, setFollow] = useState(`${FollowImg}`);
   const handleFollow = async (e) => {
-    await fetch(`http://192.168.18.4:5000/api/user/feed/following/${item?.userdetails?._id}`, { method: 'PUT', headers: { 'Content-Type': "application/JSON", token: accessToken }, body: JSON.stringify({ user:`${id}`}) })
+    await fetch(`http://139.162.11.30:80/api/user/feed/following/${item?.userdetails?._id}`, { method: 'PUT', headers: { 'Content-Type': "application/JSON", token: accessToken }, body: JSON.stringify({ user:`${id}`}) })
     setFollow(alreadyFollow);
   }
   return (

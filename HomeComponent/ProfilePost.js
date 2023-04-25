@@ -30,7 +30,7 @@ console.log(userid , "post")
   useEffect(() => {
     const getuser = async () => {
       try {
-        const res = await axios.get(`http://192.168.18.4:5000/api/user/post/user/details/${userid}`)
+        const res = await axios.get(`http://139.162.11.30:80/api/user/post/user/details/${userid}`)
         setuser(res.data);
       } catch (error) {
         console.log("Some error occured")

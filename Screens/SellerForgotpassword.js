@@ -11,7 +11,7 @@ export default function SellerForgotpassword() {
   const [email , setEmail] = useState('');
 
   const handleSend = async()=>{
-    await fetch(`http://192.168.18.4:5000/api/seller/forgetpassword` , {method:"POST", headers:{ 'Content-Type': 'application/json'},
+    await fetch(`http://139.162.11.30:80/api/seller/forgetpassword` , {method:"POST", headers:{ 'Content-Type': 'application/json'},
     body: JSON.stringify({email:email})}).then(response => {
       response.json()
       .then(data => {
